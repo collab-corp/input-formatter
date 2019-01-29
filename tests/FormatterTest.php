@@ -198,6 +198,42 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
+    public function truncateMethod()
+    {
+        $formatter = (new Formatter('some words'))->truncate(2);
+
+        $this->assertEquals("some wor", $formatter->get());
+    }
+    /**
+     * @test
+     */
+    public function insertEveryMethod()
+    {
+        $formatter = (new Formatter('1234567890'))->insertEvery(4, ' ');
+
+        $this->assertEquals("1234 5678 90", $formatter->get());
+    }
+    /**
+     * @test
+     */
+    public function toUpperMethod()
+    {
+        $formatter = (new Formatter('hi there'))->toUpper();
+
+        $this->assertEquals("HI THERE", $formatter->get());
+    }
+    /**
+     * @test
+     */
+    public function toLowerMethod()
+    {
+        $formatter = (new Formatter('HI THERE'))->toLower();
+
+        $this->assertEquals("hi there", $formatter->get());
+    }
+    /**
+     * @test
+     */
     public function decimalsMethod()
     {
         $formatter = (new Formatter('4'))->decimals(2);

@@ -137,7 +137,7 @@ class Formatter
      * when working with a single value.
      * @param  string $method
      * @param  array  $args
-     * @return
+     * @return static
      */
     protected function callMethodOnValue($method, $args =[])
     {
@@ -225,6 +225,27 @@ class Formatter
         return $value;
     }
     /**
+     * Convert the string to all lower case letters.
+     * @param  mixed $value
+     * @return mixed
+     */
+    protected function toLower($value)
+    {
+        $value = mb_strtolower($value);
+
+        return $value;
+    }
+    /**
+    * Convert the string to all lower case letters.
+    * @param  mixed $value
+    * @return mixed
+    */
+    protected function toUpper($value)
+    {
+        $value = mb_strtoupper($value);
+        return $value;
+    }
+    /**
      * Remove leading characters.
      * @param  mixed $value
      * @param  string $character
@@ -236,11 +257,25 @@ class Formatter
 
         return $value;
     }
+
+    /**
+     * Truncate off the specifed number of characters.
+     * @param  mixed $value
+     * @param  int $takeOff
+     * @return string
+     */
+    protected function truncate($value, int $takeOff = 0)
+    {
+        if(is_string($value)){
+            $value = rtrim($value, substr($value, mb_strlen($value) -($takeOff)));
+        }
+        return $value;
+    }
     /**
      * Remove succeeding characters.
      * @param  mixed $value
      * @param  string $character
-     * @return mixed
+     * @return string
      */
     protected function rtrim($value, $character = ' ')
     {
@@ -264,6 +299,21 @@ class Formatter
             }
         }
 
+        return $value;
+    }
+    /**
+     * Insert a given character after every nth character
+     * till we hit the end of the value.
+     * @param  mixed $value
+     * @param  integer $nth
+     * @param  string $insert
+     * @return string
+     */
+    protected function insertEvery($value, int $nth, $insert)
+    {
+        if(is_string($value)){
+            $value = rtrim(chunk_split($value, $nth, $insert), $insert);
+        }
         return $value;
     }
     /**
