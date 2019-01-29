@@ -1,4 +1,4 @@
-# input-formatter
+# input-formatter [![Build Status](https://travis-ci.org/collab-corp/input-formatter.svg?branch=master)](https://travis-ci.org/collab-corp/input-formatter)
 
 A php package for formatting/transforming values.
 
@@ -117,7 +117,7 @@ $this->convert($data,[
         $value = 'new value';
         return $value;
     }],
-    'something_else'=>['trim',FormattInput::class]
+    'something_else'=>['trim',FormatInput::class]
 ])
 
 //FormatInput class:
@@ -171,7 +171,7 @@ protected function somethingNew($value, $anyOtherArgs)
 # Kudos/Credits
 
 The `\CollabCorp\FormatterMethodParser\FormatterMethodParser` class that processes all methods in mass conversions
-utilizes several methods that were taken from classes in the `Illuminate\Support` pacakge. These are authored and credited to Laravel team. We do not take credit for writing these methods, We simply implemented them in our own class to conviniently parse methods. See the Laravel source for more info:
+utilizes several methods that were taken from classes in the `Illuminate\Support` package. These are authored and credited to Laravel team. We do not take credit for writing these methods, We simply implemented them in our own class to conveniently parse methods. See the Laravel source for more info:
 
 See <a target="_blank" href="https://github.com/laravel/laravel">Laravel Repo</a>.
 
