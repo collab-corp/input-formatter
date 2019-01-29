@@ -2,6 +2,11 @@
 
 A php package for formatting/transforming values.
 
+# Install
+
+via composer:
+
+`composer require collab-corp/input-formatter`
 
 
 # Intro
