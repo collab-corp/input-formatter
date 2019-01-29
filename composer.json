@@ -1,0 +1,34 @@
+{
+    "name": "collab-corp/input-formatter",
+    "description": "Formatting utility package for php",
+    "license": "MIT",
+    "type": "library",
+    "keywords": ["php", "formatting", "input formatting", "input converter"],
+    "authors": [
+        { "name": "Sergio Compean", "email": "scompean24@gmail.com" }
+    ],
+    "require": {
+        "php": "^7.0",
+        "nesbot/carbon": "^1.22"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+        "symfony/var-dumper": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "CollabCorp\\": "src/"
+        },
+        "files" : [
+            "src/Formatter/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CollabCorp\\Formatter\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
