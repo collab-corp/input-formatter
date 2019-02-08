@@ -64,7 +64,7 @@ class Formatter
     {
         $isObject = is_object($value);
         //if the method doesnt exists on this class and the value is not an object then throw exception.
-        if (!method_exists(get_class(), $method) && !$isObject) {
+        if (!method_exists(get_called_class(), $method) && !$isObject) {
             throw new \InvalidArgumentException("Call to undefined converter method [$method]");
         } elseif ($isObject && method_exists($value, $method)) {
             //call the method on the underlying object
