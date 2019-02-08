@@ -59,6 +59,20 @@ class FormatterTest extends TestCase
         $this->assertEquals($data['array'], [1,2,3]);
     }
     /** @test */
+    public function itCanBailProcessingIfValueIsEmpty()
+    {
+        $data = [
+            'date'=>null
+        ];
+
+        $data = Formatter::convert($data,[
+            'date'=>'bailIfEmpty|toCarbon',
+        ]);
+
+        $this->assertEquals($data['date'], null);
+
+    }
+    /** @test */
     public function itCanMassConvertUsingClosuresAndFormattableObjects()
     {
         $data = [

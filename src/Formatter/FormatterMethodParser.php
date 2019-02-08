@@ -152,13 +152,29 @@ class FormatterMethodParser
 
             foreach ($data = $this->extractDataThatMatchesKey($inputKey) as $key => $value) {
                 foreach ($methods as $method) {
+                    //allow formatter method processing to be bailed if the value is empty.
+                    if($method == 'bailIfEmpty' && $this->isEmptyValue($value)){
+                        break;
+                    }
                     $data = $this->callFormatter($data, $method, $key, $value);
                 }
             }
             $this->data = array_merge($this->data, $data);
         }
     }
+    /**
+     * Is empty value.
+     * @param  mixed  $value
+     * @return boolean
+     */
+    protected function isEmptyValue($value)
+    {
+        if(is_array($value)){
+            return empty($value);
+        }
 
+        return is_null($value) || $value == '';
+    }
     /**
      * Call a formatter method on the given data.
      * @param  array $data
@@ -186,7 +202,7 @@ class FormatterMethodParser
         } else {
             //otherwise parse as a string method and call accordingly.
             $details = $this->parseStringMethod($method);
-            static::set($data, $key, Formatter::call($details[0], static::get($data, $key), $details[1]));
+            static::set($data, $key, Formatter::call($details[0],static::get($data, $key), $details[1]));
         }
 
         return $data;

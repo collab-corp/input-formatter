@@ -139,6 +139,22 @@ class FormatInput implements \CollabCorp\Formatter\Contracts\Formattable{
 ```
 This allows you to have more control over the value that is being formatted.
 
+
+# Bail on empty
+
+Sometimes you may want to only process the input formatters if the value is not null or empty. For example
+you may want to convert the given `birth_date` input to a carbon instance only if its not null/empty. You
+may do so by specifying `bailIfEmpty` method before any formatters that should not be processed if no value was given:
+
+```php
+
+$this->convert($data,[
+    'birt_date'=>'bailIfEmpty|toCarbon' //only process toCarbon if there is a value.
+]);
+
+```
+
+
 # Carbon Date Support
 You may also convienently use the carbon library during these mass conversions:
 
