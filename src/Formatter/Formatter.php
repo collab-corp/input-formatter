@@ -322,9 +322,18 @@ class Formatter
      */
     protected function onlyLetters($value)
     {
-        $value = preg_replace('/\PL/u', '', $value);
+        return preg_replace('/\PL/u', '', $value);
+    }
 
-        return $value;
+
+    /**
+     * Replace all spacing between words to one single space.
+     * @param string $value
+     * @return static
+     */
+    protected function singleSpaceBetweenWords($value)
+    {
+        return preg_replace('/\s+/', ' ', trim($value));
     }
     /**
      * Remove everything but numbers from the value.
@@ -333,9 +342,7 @@ class Formatter
      */
     protected function onlyNumbers($value)
     {
-        $value = preg_replace('/[^0-9]/', '', $value);
-
-        return $value;
+        return preg_replace('/[^0-9]/', '', $value);
     }
 
     /**

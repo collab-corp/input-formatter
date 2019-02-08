@@ -131,6 +131,14 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
+    public function singleSpaceBetweenWordsMethod()
+    {
+        $formatter = (new Formatter('i am    a sentence   with lots of   spaces   in between  words  '))->singleSpaceBetweenWords();
+        $this->assertEquals('i am a sentence with lots of spaces in between words', $formatter->get());
+    }
+    /**
+     * @test
+     */
     public function ltrimMethod()
     {
         $formatter = (new Formatter('$$$$foo bar'))->ltrim("$");
