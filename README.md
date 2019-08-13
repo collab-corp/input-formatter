@@ -1,6 +1,8 @@
-# input-formatter [![Build Status](https://travis-ci.org/collab-corp/input-formatter.svg?branch=master)](https://travis-ci.org/collab-corp/input-formatter)
+# input-formatter DEPRECATED
 
 A php package for formatting/transforming values.
+
+<strong>DEPRECATED</strong>: This package has been deprecated. Consider using our <a href="https://github.com/collab-corp/formatter">formatter</a> package instead.
 
 # Install
 
